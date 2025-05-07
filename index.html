@@ -8,9 +8,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">    
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="https://img.icons8.com/?size=100&id=20777&format=png&color=000000" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="topo">
+        
         <!-- From Uiverse.io by RiccardoRapelli --> 
         <label class="switch" id="switch">
             <input id="input" type="checkbox" checked="darkTheme" />
@@ -79,24 +81,31 @@
             </div>
         </label>    
     </div>
-<div class="meio">    
-        <div class="conversor">
-            <body>
-                <div class="container">
-                    <h1>Conversor de Moedas</h1>
-                    <div class="form-group">
-                        <input type="number" id="amount" placeholder="Valor" />
-                        <select id="from-currency"></select>
-                        <span>para</span>
-                        <select id="to-currency"></select>
-                        <button onclick="convert()">Converter</button>
-                    </div>
-                    <div id="result"></div>
-                </div>
-                <script src="script.js"></script>
-                <script src="main.js"></script>
-            </body>
+    
+<div class="meio">
+    <div class="conteudo">
+        <div class="graficos">
+            <canvas id="currencyChart" width="400" height="200"></canvas>
         </div>
+    </div>    
+    <div class="conversor">
+        <body>
+            <div class="container">
+                <h1>Conversor de Moedas</h1>
+                <div class="form-group">
+                    <input type="number" id="amount" placeholder="Valor" />
+                    <select id="from-currency"></select>
+                    <span>para</span>
+                    <select id="to-currency"></select>
+                    <button onclick="convert()">Converter</button>
+                </div>
+                <div id="result"></div>
+            </div>            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="script.js"></script>
+            <script src="main.js"></script>
+        </body>
+    </div>
 </div>
 
 </body>

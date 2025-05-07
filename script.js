@@ -35,3 +35,51 @@ async function convert() {
 }
 
 fetchCurrencies();
+
+async function carregarGraficoMoeda(base = 'USD', destino = 'BRL') {
+    const hoje = new Date();
+    const seteDiasAtras = new Date();
+    seteDiasAtras.setDate(hoje.getDate() - 7);
+
+    const formatoData = (data) => data.toISOString().split('T')[0];
+    const inicio = formatoData(seteDiasAtras);
+    const fim = formatoData(hoje);
+
+    const url = `https://api.frankfurter.app/${inicio}..${fim}?from=${base}&to=${destino}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const labels = Object.keys(data.rates);
+      const valores = labels.map(dataKey => data.rates[dataKey][destino]);
+
+      const ctx = document.getElementById('currencyChart').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: `${base} para ${destino}`,
+            data: valores,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(16, 41, 41, 0.62)',
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Erro ao carregar dados da API:', error);
+    }
+  }
+
+  carregarGraficoMoeda(); // USD para BRL

@@ -8,7 +8,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
+    flex-direction: column;
 }
 .conversor {
     display: flex;
@@ -31,7 +32,7 @@ body {
     width: 60px;
     height: 34px;
     margin-right: 50px;
-    margin-top: 10;
+    margin-top: 5px;
   }
   
   .switch #input {
@@ -623,5 +624,20 @@ body {
     background-color: #ffffff;
     color: black;
   }
-  
+  .graficos {
+    display: flex;
+    width: 350px;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    background: #fcfcfc;
+    border-radius: 5%;
+    padding: 10px ;
+  }
+  .conteudo {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+  }
   
